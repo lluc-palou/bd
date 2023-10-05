@@ -8,7 +8,7 @@ Num_dpt		Nom_dpt
 #A=DEPARTAMENTS(CIUTAT_DPT='MADRID')
 B=EMPLEATS(SOU>200000)
 C=A*B
-D=C[NUM_DPT, NOM_DPT]
+R=C[NUM_DPT, NOM_DPT]
 
 # EXERCICI 2:
 "Doneu una seqüència d'operacions d'algebra relacional per obtenir el nom del departament on treballa i el nom del projecte 
@@ -20,7 +20,7 @@ MARKETING		IBDVID"
 #A=EMPLEATS(NUM_EMPL=2)
 B=A*DEPARTAMENTS
 C=B*PROJECTES
-D=C[NOM_DPT, NOM_PROJ]
+R=C[NOM_DPT, NOM_PROJ]
 
 # EXERCICI 3:
 "Doneu una seqüència d'operacions de l'àlgebra relacional per obtenir el número i nom dels departaments que tenen dos o més 
@@ -46,6 +46,8 @@ Num_dpt		Nom_dpt
 
 #A=DEPARTAMENTS*EMPLEATS
 B=A(CIUTAT_EMPL != 'MADRID')
-C=DEPARTAMENTS*EMPLEATS
-D=C-B
-R=D[NUM_DPT, NOM_DPT]
+C=B[NUM_DPT, NOM_DPT, CIUTAT_EMPL]
+D=DEPARTAMENTS*EMPLEATS
+E=D[NUM_DPT, NOM_DPT, CIUTAT_EMPL]
+F=E-C
+R=F[NUM_DPT, NOM_DPT]
